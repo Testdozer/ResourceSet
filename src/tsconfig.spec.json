@@ -1,7 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/spec",
+    "outDir": "../out-spec",
+    "baseUrl": "./",
+    "target": "es6",
     "module": "commonjs",
     "types": [
       "jasmine",
@@ -10,15 +12,11 @@
   },
   "files": [
     "test.ts",
-    "polyfills-test.ts"
+    "unit-tests.index.ts",
+    "polyfills.ts"
   ],
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts"
-  ],
-  "exclude": [
-    "dist",
-    "app-builds",
-    "node_modules"
   ]
 }

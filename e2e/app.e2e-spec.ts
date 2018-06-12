@@ -1,15 +1,15 @@
-import { AngularElectronPage } from './app.po';
-import { browser, element, by } from 'protractor';
+import { by, element } from "protractor";
+import { AngularElectronPage } from "./app.po";
 
-describe('angular-electron App', () => {
+describe("resource-set App", () => {
   let page: AngularElectronPage;
 
   beforeEach(() => {
     page = new AngularElectronPage();
   });
 
-  it('should display message saying App works !', () => {
-    page.navigateTo('/');
-    expect(element(by.css('app-home h1')).getText()).toMatch('App works !');
+  it("should display message saying App works !", () => {
+    page.navigateTo("/");
+    expect(element(by.css("app-home h1")).getText()).toMatch("App works !");
   });
 });

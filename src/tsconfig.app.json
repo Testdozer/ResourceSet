@@ -11,6 +11,8 @@
     "**/*.spec.ts",
     "dist",
     "app-builds",
-    "node_modules"
+    "node_modules",
+    "unit-tests.components",
+    "unit-tests.index.ts"
   ]
 }

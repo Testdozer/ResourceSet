@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "resource-set",
   "directories": {
     "output": "app-builds"
   },
@@ -17,7 +17,8 @@
         "!_config.yml",
         "!karma.conf.js",
         "!tsconfig.json",
-        "!tslint.json"
+        "!tslint.json",
+        "!unit-tests.components/"
     ],
   "win": {
     "icon": "dist",
