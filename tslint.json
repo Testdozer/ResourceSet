@@ -115,13 +115,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "pr",
+      "app",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "pr",
+      "app",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -152,7 +152,7 @@
     "pipe-naming": [
       true,
       "camelCase",
-      "pr"
+      "app"
     ],
     "trailing-comma": [
       false
