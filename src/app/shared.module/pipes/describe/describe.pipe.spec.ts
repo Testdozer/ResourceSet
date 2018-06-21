@@ -1,7 +1,7 @@
 import { cold } from "jasmine-marbles";
 import { createInjector, get, resolve } from "../../../../unit-tests.components/mocks/createInjector";
-import { DescriptionProvider } from "../../../core/services/description.provider/description.provider";
-import { TranslatableService } from "../../../core/services/translate/translatable.service";
+import { DescriptionProvider } from "../../../core.module/services/description.provider/description.provider";
+import { TranslatableService } from "../../../core.module/services/translate/translatable.service";
 import { DescribePipe } from "./describe.pipe";
 
 describe("Describe pipe", () => {
