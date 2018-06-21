@@ -3,33 +3,29 @@ import { NgModule } from "@angular/core";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { EffectsModule } from "@ngrx/effects";
+import { RouterStateSerializer, StoreRouterConnectingModule } from "@ngrx/router-store";
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import "reflect-metadata";
 import "zone.js/dist/zone-mix";
+import { environment } from "../environments/environment";
 import "../polyfills";
 import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { FooterComponent } from "./components/footer/footer.component";
-import { HomeComponent } from "./components/home/home.component";
-import { TableComponent } from "./components/table/table.component";
-import { ToolbarComponent } from "./components/toolbar/toolbar.component";
-import { WebviewDirective } from "./shared/directives/webview.directive";
-import { ElectronService } from "./shared/providers/electron.service";
+import { AppComponent } from "./core.module/containers/app.component/app.component";
+import { CoreModule } from "./core.module/core.module";
+import { metaReducers } from "./core.module/reducers/meta.reducer";
+import { reducers } from "./core.module/reducers/router.reducer";
+import { ElectronService } from "./shared.module/providers/electron.service";
+import { CustomRouterStateSerializer } from "./shared/custom-router-state-serializer";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    WebviewDirective,
-    ToolbarComponent,
-    TableComponent,
-    FooterComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -42,9 +38,22 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: (HttpLoaderFactory),
         deps: [HttpClient]
       }
-    })
+    }),
+    StoreModule.forRoot(reducers, {metaReducers}),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: "router"
+    }),
+    StoreDevtoolsModule.instrument({
+      name: "NgRx DevTools",
+      logOnly: environment.production
+    }),
+    EffectsModule.forRoot([]),
+    CoreModule
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
