@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ProjectSelectorComponent } from "./components/project-selector/project-selector.component";
 import { ProjectSelectorContainer } from "./containers/project-selector.container";
 import { ProjectSelectorRoutingModule } from "./project-selector.routing.module";
 
@@ -8,7 +9,10 @@ import { ProjectSelectorRoutingModule } from "./project-selector.routing.module"
     CommonModule,
     ProjectSelectorRoutingModule
   ],
-  declarations: [ProjectSelectorContainer]
+  declarations: [
+    ProjectSelectorContainer,
+    ProjectSelectorComponent
+  ]
 })
 export class ProjectSelectorModule {
 }
