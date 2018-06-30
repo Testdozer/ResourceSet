@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NotFoundPageComponent } from "./core.module/containers/not-found-page.component";
 
-const PROJECT_SELECTOR = "project-selector";
+export const PROJECT_SELECTOR = "project-selector";
 const routes: Routes = [
   {
     path: PROJECT_SELECTOR,
