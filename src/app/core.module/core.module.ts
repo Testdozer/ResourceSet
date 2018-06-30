@@ -5,6 +5,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { SharedModule } from "../shared.module/shared.module";
 import { AppComponent } from "./containers/app.component/app.component";
 import { NotFoundPageComponent } from "./containers/not-found-page.component";
+import { StartUpEffect } from "./effects/start-up/start-up.effect";
 
 export const COMPONENTS = [
   AppComponent,
@@ -15,7 +16,7 @@ export const COMPONENTS = [
   imports: [
     SharedModule,
     RouterModule,
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([StartUpEffect]),
     TranslateModule.forChild()
   ],
   declarations: COMPONENTS,
