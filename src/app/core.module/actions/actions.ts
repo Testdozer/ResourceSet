@@ -1,3 +1,4 @@
 export enum AppActionTypes {
-  Start = "[Start] Action",
+  Start = "[App] StartUp",
+  OpenProject = "[App] OpenProject"
 }

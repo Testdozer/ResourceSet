@@ -20,6 +20,11 @@
     "i18n",
     "resource"
   ],
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "main": "main.js",
   "private": true,
   "scripts": {
@@ -51,7 +56,6 @@
     "@angular/compiler-cli": "6.0.3",
     "@angular/core": "6.0.3",
     "@angular/core-builds": "git://github.com/Testdozer/core-builds.git#6.0.x",
-    "@angular/flex-layout": "^6.0.0-beta.15",
     "@angular/forms": "6.0.3",
     "@angular/http": "6.0.3",
     "@angular/language-service": "6.0.3",

@@ -1,6 +1,5 @@
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { EffectsModule } from "@ngrx/effects";
@@ -30,7 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    FlexLayoutModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {

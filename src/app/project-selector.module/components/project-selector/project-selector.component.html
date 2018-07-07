@@ -1,15 +1,15 @@
-<div fxLayout="column" fxLayoutAlign="start start">
+<div>
 
-  <div fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+  <div>
     <img src="./assets/translate.png" />
   </div>
 
-  <div fxLayout="row" fxFlexFill>
-    <button fxFlexFill (ckick)="selectFolderRequested.emit()">
+  <div>
+    <button (click)="openFolder()">
         {{ 'pages.folder-selector.select-folder' | translate }}
     </button>
   </div>
 
-  <div fxFlex="grow">
+  <div>
   </div>
 </div>

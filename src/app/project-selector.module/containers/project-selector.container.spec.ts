@@ -17,7 +17,7 @@ describe("Project selector container", () => {
 
   it("Dispatches select folder action", () => {
     const component = get<ProjectSelectorContainer>();
-    component.onSelectFolder();
+    component.selectFolder();
 
     const expected = new SelectFolder();
     resolve<Store<any>>(Store)
