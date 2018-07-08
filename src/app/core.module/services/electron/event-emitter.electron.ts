@@ -1,4 +1,4 @@
-import EventEmitter = Electron.EventEmitter;
+import { EventEmitter } from "electron";
 
 export abstract class EventEmitterElectron<T extends EventEmitter> implements EventEmitter {
 
