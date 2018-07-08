@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Dialog } from "electron";
 import { EventEmitterElectron } from "./event-emitter.electron";
-import Dialog = Electron.Dialog;
 
 @Injectable({
   providedIn: "root"
