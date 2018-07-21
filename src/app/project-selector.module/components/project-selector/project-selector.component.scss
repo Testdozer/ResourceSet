@@ -1,0 +1,31 @@
+.project-selector {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .logo{
+    justify-self: center;
+    margin: 30px;
+  }
+
+  .open-folder-btn{
+    height: 53px;
+    background-color: #94E16D;
+
+    text-transform: uppercase;
+    border-color: transparent;
+    cursor: pointer;
+
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+    /* Select directory: */
+    font-family: Roboto-Medium;
+    font-size: 18px;
+    color: #FFFFFF;
+    letter-spacing: 0.64px;
+    text-align: center;
+    text-shadow: 0 2px 5px #69C03D;
+  }
+}
