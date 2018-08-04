@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
+import { MaterialModule } from "../material.module/material.module";
 import { DescribePipe } from "./pipes/describe/describe.pipe";
 
 const COMPONENTS = [
@@ -14,7 +15,8 @@ const SHARED_MODULES = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  TranslateModule
+  TranslateModule,
+  MaterialModule
 ];
 
 @NgModule({

@@ -1,5 +1,9 @@
 @import "../../../../styles/vasriable";
 
+:host {
+  display: block;
+}
+
 .project-selector {
   display: grid;
   grid-template-columns: 1fr;

@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { TranslateModule } from "@ngx-translate/core";
+import { SharedModule } from "../shared.module/shared.module";
+import { ProjectSelectorHistoryComponent } from "./components/project-selector.history/project-selector.history.component";
 import { ProjectSelectorPageComponent } from "./components/project-selector.page/project-selector.page.component";
 import { ProjectSelectorComponent } from "./components/project-selector/project-selector.component";
 import { ProjectHistoryContainer } from "./containers/project-history.container";
@@ -18,13 +20,15 @@ import { projectSelectorReducerMap } from "./reducers/reducers.map";
     TranslateModule,
     ProjectSelectorRoutingModule,
     EffectsModule.forFeature([SelectFolderEffect]),
-    StoreModule.forFeature(PROJECT_SELECTOR_FEATURE_NAME, projectSelectorReducerMap)
+    StoreModule.forFeature(PROJECT_SELECTOR_FEATURE_NAME, projectSelectorReducerMap),
+    SharedModule
   ],
   declarations: [
     ProjectSelectorPageComponent,
     ProjectSelectorContainer,
     ProjectSelectorComponent,
-    ProjectHistoryContainer
+    ProjectHistoryContainer,
+    ProjectSelectorHistoryComponent
   ],
   entryComponents: [
     ProjectSelectorPageComponent
