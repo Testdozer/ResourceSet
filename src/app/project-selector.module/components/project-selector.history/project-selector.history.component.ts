@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import { HistoryItem } from "../../store/history.item";
 
 @Component({
-  selector: "app-project-selector-history",
+  selector: "app-history-item",
   templateUrl: "./project-selector.history.component.html",
   styleUrls: ["./project-selector.history.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,8 +13,8 @@ export class ProjectSelectorHistoryComponent {
   public item: HistoryItem;
 
   @Output()
-  public openItem = new EventEmitter<HistoryItem>();
+  public openItem = new EventEmitter<void>();
 
   @Output()
-  public deleteItem = new EventEmitter<HistoryItem>();
+  public deleteItem = new EventEmitter<void>();
 }

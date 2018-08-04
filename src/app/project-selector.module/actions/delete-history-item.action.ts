@@ -1,8 +1,8 @@
 import { Action } from "@ngrx/store";
 
-export class DeleteHistoryItem implements Action {
+export class DeleteHistoryItemAction implements Action {
   public static type = "[Project Selector] Delete History Item";
-  public readonly type = DeleteHistoryItem.type;
+  public readonly type = DeleteHistoryItemAction.type;
 
   constructor(public payload: { path: string }) {
 
