@@ -3,6 +3,7 @@ import { Store } from "@ngrx/store";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";
 
 @Component({
+  selector: "app-project-history-container",
   template: `
     <app-project-selector (selectFolderRequested)="openProject($event)"></app-project-selector>`
 })

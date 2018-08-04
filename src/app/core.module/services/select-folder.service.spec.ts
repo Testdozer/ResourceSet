@@ -27,7 +27,7 @@ describe("Select folder service", () => {
 
     const service = get<SelectFolderService>();
     const actual$ = service.select();
-    const expected$ = cold("(a|", { a: path });
+    const expected$ = cold("(a|", {a: path});
     expect(actual$).toBeObservable(expected$);
   });
 });

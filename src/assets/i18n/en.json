@@ -1,7 +1,8 @@
 {
   "pages": {
-      "folder-selector": {
-          "select-folder": "Select directory"
-      }
+    "folder-selector": {
+      "select-folder": "Select directory",
+      "history-title": "open recent"
+    }
   }
 }

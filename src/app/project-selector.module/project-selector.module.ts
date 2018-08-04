@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { TranslateModule } from "@ngx-translate/core";
+import { ProjectSelectorPageComponent } from "./components/project-selector.page/project-selector.page.component";
 import { ProjectSelectorComponent } from "./components/project-selector/project-selector.component";
 import { ProjectHistoryContainer } from "./containers/project-history.container";
 import { ProjectSelectorContainer } from "./containers/project-selector.container";
@@ -20,9 +21,13 @@ import { projectSelectorReducerMap } from "./reducers/reducers.map";
     StoreModule.forFeature(PROJECT_SELECTOR_FEATURE_NAME, projectSelectorReducerMap)
   ],
   declarations: [
+    ProjectSelectorPageComponent,
     ProjectSelectorContainer,
     ProjectSelectorComponent,
     ProjectHistoryContainer
+  ],
+  entryComponents: [
+    ProjectSelectorPageComponent
   ]
 })
 export class ProjectSelectorModule {

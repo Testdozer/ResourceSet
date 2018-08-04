@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { ProjectSelectorContainer } from "./containers/project-selector.container";
+import { ProjectSelectorPageComponent } from "./components/project-selector.page/project-selector.page.component";
 
 @NgModule({
   exports: [
@@ -9,7 +9,7 @@ import { ProjectSelectorContainer } from "./containers/project-selector.containe
   imports: [
     RouterModule.forChild([
       {
-        component: ProjectSelectorContainer,
+        component: ProjectSelectorPageComponent,
         path: ""
       }])
   ]

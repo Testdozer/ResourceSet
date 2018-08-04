@@ -1,0 +1,23 @@
+@import "../../../../styles/vasriable";
+
+.project-selector {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .logo{
+    justify-self: center;
+    margin: 30px;
+  }
+
+  .history-title{
+    text-transform: uppercase;
+    text-align: center;
+    /* Open recent: */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: $text-color;
+  }
+}

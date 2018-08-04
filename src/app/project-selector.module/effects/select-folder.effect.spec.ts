@@ -17,7 +17,7 @@ describe("Select folder effect", () => {
     expect(actual).toEqual(jasmine.any(SelectFolderEffect));
   });
 
-  it("Dispatches open project file when a folder has been selected", () => {
+  it("Dispatches open project path when a folder has been selected", () => {
 
     const path = "path to folder";
     const actions$ = cold("a", {a: new SelectFolderAction()});
