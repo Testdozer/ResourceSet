@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { TranslateService } from "@ngx-translate/core";
-import { Start } from "../../actions/start.action";
+import { StartAction } from "../../actions/start.action";
 import { IRouterState } from "../../reducers/router.reducer";
 
 @Component({
@@ -13,6 +13,6 @@ export class AppComponent {
               store: Store<IRouterState>) {
 
     translate.setDefaultLang("en");
-    store.dispatch(new Start());
+    store.dispatch(new StartAction());
   }
 }

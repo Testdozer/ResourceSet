@@ -1,7 +1,7 @@
 import { ActionReducerMap } from "@ngrx/store";
-import { IProjectSelectorStore } from "../store/project-selector.store";
+import { IProjectSelectorState } from "../store/project-selector.state";
+import { historyReducer } from "./history.reducer";
 
-export const projectSelectorReducerMap: ActionReducerMap<IProjectSelectorStore> =
-{
-  history: {}
+export const projectSelectorReducerMap: ActionReducerMap<IProjectSelectorState> = {
+  history: historyReducer
 };

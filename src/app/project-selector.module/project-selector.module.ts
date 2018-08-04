@@ -7,6 +7,7 @@ import { ProjectSelectorComponent } from "./components/project-selector/project-
 import { ProjectHistoryContainer } from "./containers/project-history.container";
 import { ProjectSelectorContainer } from "./containers/project-selector.container";
 import { SelectFolderEffect } from "./effects/select-folder.effect";
+import { PROJECT_SELECTOR_FEATURE_NAME } from "./project-selector.feature-name";
 import { ProjectSelectorRoutingModule } from "./project-selector.routing.module";
 import { projectSelectorReducerMap } from "./reducers/reducers.map";
 
@@ -16,7 +17,7 @@ import { projectSelectorReducerMap } from "./reducers/reducers.map";
     TranslateModule,
     ProjectSelectorRoutingModule,
     EffectsModule.forFeature([SelectFolderEffect]),
-    StoreModule.forFeature("ProjectSelector", projectSelectorReducerMap)
+    StoreModule.forFeature(PROJECT_SELECTOR_FEATURE_NAME, projectSelectorReducerMap)
   ],
   declarations: [
     ProjectSelectorContainer,

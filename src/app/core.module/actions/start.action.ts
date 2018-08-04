@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import { AppActionTypes } from "./actions";
 
-export class Start implements Action {
-  public readonly type = AppActionTypes.Start;
+export class StartAction implements Action {
+  public static readonly type = "[App] StartUp";
+  public readonly type = StartAction.type;
 }

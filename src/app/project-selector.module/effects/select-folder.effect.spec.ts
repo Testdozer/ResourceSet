@@ -3,7 +3,7 @@ import { cold } from "jasmine-marbles";
 import { createInjector, get, resolve } from "../../../unit-tests.components/mocks/createInjector";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";
 import { SelectFolderService } from "../../core.module/services/select-folder.service";
-import { SelectFolder } from "../actions/actions";
+import { SelectFolderAction } from "../actions/select-folder.action";
 import { SelectFolderEffect } from "./select-folder.effect";
 
 describe("Select folder effect", () => {
@@ -20,7 +20,7 @@ describe("Select folder effect", () => {
   it("Dispatches open project file when a folder has been selected", () => {
 
     const path = "path to folder";
-    const actions$ = cold("a", {a: new SelectFolder()});
+    const actions$ = cold("a", {a: new SelectFolderAction()});
 
     resolve<Actions>(Actions)
       .setup(instance => instance.pipe)
@@ -36,8 +36,7 @@ describe("Select folder effect", () => {
 
   it("Does not dispatch any actions when folder has not been selected", () => {
 
-    const path = "path to folder";
-    const actions$ = cold("a", {a: new SelectFolder()});
+    const actions$ = cold("a", {a: new SelectFolderAction()});
 
     resolve<Actions>(Actions)
       .setup(instance => instance.pipe)

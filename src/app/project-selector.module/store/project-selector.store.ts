@@ -1,6 +1,5 @@
-import { EntityState } from "@ngrx/entity";
-import { HistoryItem } from "./history.item";
+import { IProjectSelectorState } from "./project-selector.state";
 
 export interface IProjectSelectorStore {
-  history: EntityState<HistoryItem>;
+  projectSelector: IProjectSelectorState;
 }

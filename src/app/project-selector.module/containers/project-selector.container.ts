@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { SelectFolder } from "../actions/actions";
+import { SelectFolderAction } from "../actions/select-folder.action";
 
 @Component({
   template: `
@@ -11,6 +11,6 @@ export class ProjectSelectorContainer {
   }
 
   public selectFolder(): void {
-    this.store.dispatch(new SelectFolder());
+    this.store.dispatch(new SelectFolderAction());
   }
 }

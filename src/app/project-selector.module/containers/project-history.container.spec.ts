@@ -1,5 +1,4 @@
 import { Store } from "@ngrx/store";
-import { cold } from "jasmine-marbles";
 import { createInjector, get, resolve } from "../../../unit-tests.components/mocks/createInjector";
 import { Is } from "../../../unit-tests.components/moq/equal";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";

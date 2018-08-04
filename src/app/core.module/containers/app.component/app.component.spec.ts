@@ -2,7 +2,7 @@ import { Store } from "@ngrx/store";
 import { TranslateService } from "@ngx-translate/core";
 import { createInjector, get, resolve } from "../../../../unit-tests.components/mocks/createInjector";
 import { Is } from "../../../../unit-tests.components/moq/equal";
-import { Start } from "../../actions/start.action";
+import { StartAction } from "../../actions/start.action";
 import { IRouterState } from "../../reducers/router.reducer";
 import { AppComponent } from "./app.component";
 
@@ -27,7 +27,7 @@ describe("App container", () => {
   it("Dispatches start up action", () => {
     const component = get<AppComponent>();
 
-    const expected = new Start();
+    const expected = new StartAction();
     resolve<Store<IRouterState>>(Store)
       .verify(instance => instance.dispatch(Is.Eq(expected)));
   });

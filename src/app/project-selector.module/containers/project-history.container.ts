@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";
-import { SelectFolder } from "../actions/actions";
 
 @Component({
   template: `

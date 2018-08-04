@@ -5,7 +5,7 @@ import { Observable } from "rxjs/index";
 import { map, switchMap } from "rxjs/internal/operators";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";
 import { SelectFolderService } from "../../core.module/services/select-folder.service";
-import { ProjectSelectorActionTypes, SelectFolder } from "../actions/actions";
+import { SelectFolderAction } from "../actions/select-folder.action";
 
 @Injectable()
 export class SelectFolderEffect {
@@ -17,7 +17,7 @@ export class SelectFolderEffect {
   @Effect()
   public onSelectFolder$(): Observable<Action> {
     return this.action$.pipe(
-      ofType<SelectFolder>(ProjectSelectorActionTypes.SelectFolder),
+      ofType<SelectFolderAction>(SelectFolderAction.type),
       switchMap(() => this.selectFolderService.select()
         .pipe(map(path => new OpenProjectAction({path}))))
     );

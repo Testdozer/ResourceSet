@@ -1,7 +1,7 @@
 import { Actions } from "@ngrx/effects";
 import { cold } from "jasmine-marbles";
 import { createInjector, get, resolve } from "../../../../unit-tests.components/mocks/createInjector";
-import { Start } from "../../actions/start.action";
+import { StartAction } from "../../actions/start.action";
 import { Navigation } from "../../services/navigation.service";
 import { StartUpEffect } from "./start-up.effect";
 
@@ -18,7 +18,7 @@ describe("Start up effect", () => {
 
   it("Navigates to the project selector screen", () => {
 
-    const actions$ = cold("a", {a: new Start()});
+    const actions$ = cold("a", {a: new StartAction()});
 
     resolve<Actions>(Actions)
       .setup(instance => instance.pipe)
@@ -26,7 +26,7 @@ describe("Start up effect", () => {
 
     const effect = get<StartUpEffect>();
 
-    expect(effect.onStartUp$()).toBeObservable(cold("a", {a: new Start()}));
+    expect(effect.onStartUp$()).toBeObservable(cold("a", {a: new StartAction()}));
     resolve<Navigation>(Navigation)
       .verify(instance => instance.toProjectSelector());
   });
