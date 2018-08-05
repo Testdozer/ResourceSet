@@ -1,5 +1,6 @@
-import { cold } from "../../../../node_modules/jasmine-marbles";
-import { It } from "../../../../node_modules/moq.ts";
+import { NgZone } from "@angular/core";
+import { cold } from "jasmine-marbles";
+import { It } from "moq.ts";
 import { createInjector, get, resolve } from "../../../unit-tests.components/mocks/createInjector";
 import { Is } from "../../../unit-tests.components/moq/equal";
 import { DialogElectron } from "./electron/dialog.electron";
@@ -23,6 +24,12 @@ describe("Select folder service", () => {
       .setup(instance => instance.showOpenDialog(Is.Eq<any>({properties: ["openDirectory"]}), It.IsAny()))
       .callback((arg, func: (filePaths: string[], bookmarks: string[]) => void) => {
         func([path], undefined);
+      });
+
+    resolve<NgZone>(NgZone)
+      .setup(instance => instance.run(It.IsAny()))
+      .callback((func: () => void) => {
+        func();
       });
 
     const service = get<SelectFolderService>();
