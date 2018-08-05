@@ -1,19 +1,20 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { OpenProjectAction } from "../../core.module/actions/open-project.action";
+import { Action } from "@ngrx/store";
 import { DeleteHistoryItemAction } from "../actions/delete-history-item.action";
 import { HistoryItem } from "../store/history.item";
+import { AddHistoryItemAction } from "./../actions/add-history-item.action";
 
 export const historyItemEntityAdapter: EntityAdapter<HistoryItem> = createEntityAdapter<HistoryItem>({
-  selectId: employee => employee.path,
+  selectId: historyItem => historyItem.path,
   sortComparer: false
 });
 
 const initialState = historyItemEntityAdapter.getInitialState();
 
-export function historyReducer(state = initialState, action: OpenProjectAction | DeleteHistoryItemAction): EntityState<HistoryItem> {
-  // if (action instanceof OpenProjectAction) {
-  //   return historyItemEntityAdapter.addOne(action.payload, {...state});
-  // }
+export function historyReducer(state = initialState, action: Action): EntityState<HistoryItem> {
+  if (action instanceof AddHistoryItemAction) {
+    return historyItemEntityAdapter.addOne(action.payload, {...state});
+  }
 
   if (action instanceof DeleteHistoryItemAction) {
     return historyItemEntityAdapter.removeOne(action.payload.path, {...state});

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs/index";
 import { OpenProjectAction } from "../../core.module/actions/open-project.action";
@@ -9,6 +9,7 @@ import { HistoryItem } from "../store/history.item";
 @Component({
   selector: "app-project-history-container",
   template: `
+    {{test}}
     <app-history-item
       *ngFor="let item of history$ | async; trackBy: trackByFn"
       [item]="item"
@@ -16,13 +17,21 @@ import { HistoryItem } from "../store/history.item";
       (deleteItem)="onDelete(item)"></app-history-item>`,
   styles: [`:host {
     display: block;
-  }`]
+   }`],
 })
 export class ProjectHistoryContainer {
   public history$: Observable<HistoryItem[]>;
 
+  public test = "test";
+
   constructor(private store: Store<any>) {
     this.history$ = store.pipe(historyItemsSelector);
+    // this.history$.subscribe(result => {
+    //   // console.log(result);
+    //   if(result.length > 0) {
+    //     this.test = result[0].name;
+    //   }
+    // });
   }
 
   public openProject(item: HistoryItem): void {
