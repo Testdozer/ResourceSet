@@ -1,11 +1,10 @@
 import { Dictionary } from "@ngrx/entity/src/models";
 import { cold } from "jasmine-marbles";
+import { Mock } from "moq.ts";
 import { dataMock } from "../../../unit-tests.components/data-mock";
 import { HistoryItem } from "../store/history.item";
 import { IProjectSelectorStore } from "../store/project-selector.store";
 import { historyItemsSelector } from "./history-items.selector";
-import { Mock } from "moq.ts";
-import { projectSelectorHistoryProjector } from "../projectors/project-selector.history.projector";
 
 describe("History items selector", () => {
 
