@@ -5,6 +5,7 @@ import { HistoryItem } from "../store/history.item";
 import { IProjectSelectorStore } from "../store/project-selector.store";
 import { historyItemsSelector } from "./history-items.selector";
 import { Mock } from "moq.ts";
+import { projectSelectorHistoryProjector } from "../projectors/project-selector.history.projector";
 
 describe("History items selector", () => {
 
@@ -31,6 +32,6 @@ describe("History items selector", () => {
     const store$ = cold("a|", {a: store});
 
     const actual = store$.pipe(historyItemsSelector);
-    expect(actual).toBeObservable(cold("(a|)", {a: [item]}));
+    expect(actual).toBeObservable(cold("a|", {a: [item]}));
   });
 });
