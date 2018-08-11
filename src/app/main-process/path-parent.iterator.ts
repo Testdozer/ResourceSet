@@ -2,17 +2,19 @@ import * as path from "path";
 
 export class PathParentIterator {
   constructor(
-    private sep: string,
-    private join: typeof path.join) {
+    private dirname: typeof path.dirname) {
   }
 
   public *paths(directory: string): IterableIterator<string> {
-    for (let i = 0; i < directory.split(this.sep).length; i++) {
-      const params = [directory];
-      for (let j = 0; j < i ; j++) {
-        params.push("..");
+    let current = directory;
+    yield current;
+    while ( true ) {
+      const parent = this.dirname(current);
+      if ( parent === current) {
+        return;
       }
-      yield this.join(...params);
+      current = parent;
+      yield current;
     }
   }
 }

@@ -1,9 +1,7 @@
 import * as fs from "fs";
-import { It, Mock } from "moq.ts";
+import { Mock } from "moq.ts";
 import * as path from "path";
 import { PackageJsonExistsProvider } from "./package-json-exists.provider";
-import { PackageJsonProvider } from "./package-json.provider";
-import { PathParentIterator } from "./path-parent.iterator";
 
 describe("Package Json Exists Provider", () => {
 
