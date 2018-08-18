@@ -1,10 +1,15 @@
+import { IpcMainProvider } from "./ipc-main.provider";
+import { ProjectNameEvent } from "./project-name.event";
 
 export class ChannelWriter {
 
   public static readonly channelName: string = "projectName:reply";
 
-  public write(projectName: string) {
-    throw new Error("Method not implemented.");
+  constructor(private ipcMain: IpcMainProvider) {
+  }
+
+  public write(projectNameEvent: ProjectNameEvent, projectName: string) {
+    projectNameEvent.event.sender.send(ChannelWriter.channelName, projectName);
   }
 
 }

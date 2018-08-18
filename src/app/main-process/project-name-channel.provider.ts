@@ -12,9 +12,9 @@ export class ProjectNameChannelProvider {
 
   public start() {
    this.channelReader.read()
-      .subscribe(directory => {
-        const projectName =  this.projectNameProvider.get(directory);
-        this.channelWriter.write(projectName);
+      .subscribe(projectNameEvent => {
+        const projectName =  this.projectNameProvider.get(projectNameEvent.directoryName);
+        this.channelWriter.write(projectNameEvent, projectName);
       });
 
   }
