@@ -1,19 +1,23 @@
-import { Injectable } from "@angular/core";
-import { Observable, observable } from "rxjs";
+import { Injectable, NgZone } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class ProjectNameProviderWrapper {
 
+  constructor( private zone: NgZone) {
+  }
+
   public get (directory: string): Observable<string> {
     return new Observable<string>(observer => {
-      const projectNameFactory = window.require("electron").remote.require("./app/main-process/project-name-provider.factory");
-      const projectName = projectNameFactory().get(directory);
-      if (projectName !== undefined) {
-        observer.next(projectName);
-      }
-      observer.complete();
+      window.require("electron").ipcRenderer.once("projectName:reply", (event, arg) => {
+        this.zone.run(() => {
+          observer.next(arg);
+          observer.complete();
+        });
+      });
+      window.require("electron").ipcRenderer.send("projectName", directory);
     });
   }
 }

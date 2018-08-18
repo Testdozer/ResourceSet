@@ -6,8 +6,6 @@ export class ChannelWriter {
 
   public write(projectNameEvent: ProjectNameEvent, projectName: string) {
     projectNameEvent.event.sender.send(ChannelWriter.channelName, projectName);
-    console.log("Start");
-    console.log(projectName);
   }
 
 }
