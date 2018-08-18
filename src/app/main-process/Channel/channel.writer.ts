@@ -1,15 +1,13 @@
-import { IpcMainProvider } from "./ipc-main.provider";
 import { ProjectNameEvent } from "./project-name.event";
 
 export class ChannelWriter {
 
   public static readonly channelName: string = "projectName:reply";
 
-  constructor(private ipcMain: IpcMainProvider) {
-  }
-
   public write(projectNameEvent: ProjectNameEvent, projectName: string) {
     projectNameEvent.event.sender.send(ChannelWriter.channelName, projectName);
+    console.log("Start");
+    console.log(projectName);
   }
 
 }
