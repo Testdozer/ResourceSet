@@ -1,12 +1,12 @@
 import { cold } from "jasmine-marbles";
 import { It, Mock, Times } from "moq.ts";
-import { ChannelSubscriber } from "./channel.subscriber";
+import { ChannelReader } from "./channel.reader";
 import { IpcMainProvider } from "./ipc-main.provider";
 
-describe("channel subscriber", () => {
+describe("channel reader", () => {
 
   it("Returns subscription", () => {
-    const channel = ChannelSubscriber.channelName;
+    const channel = ChannelReader.channelName;
     const replyChannel = "replyChannel";
     const ipcMainProvider = new Mock<IpcMainProvider>()
       .setup(instance => instance.on(channel, It.IsAny()))
@@ -17,8 +17,8 @@ describe("channel subscriber", () => {
       .setup(instance => instance.removeListener(channel))
       .returns(undefined);
 
-    const service = new ChannelSubscriber(ipcMainProvider.object());
-    const actual$ = service.subscribe();
+    const service = new ChannelReader(ipcMainProvider.object());
+    const actual$ = service.read();
 
     const expected$ = cold("(a|", {a: replyChannel});
     expect(actual$).toBeObservable(expected$);
