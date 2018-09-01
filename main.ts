@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen } from "electron";
 import * as path from "path";
 import * as url from "url";
-import { projectNameChannelProviderFactory } from "./src/app/main-process/project-name-channel-provider.factory";
+import { projectNameChannelProviderFactory } from "./src/main-process/project-name-channel-provider.factory";
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -47,6 +47,8 @@ function createWindow() {
 
 try {
 
+  projectNameChannelProviderFactory().start();
+
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
@@ -68,8 +70,6 @@ try {
       createWindow();
     }
   });
-
-  projectNameChannelProviderFactory().start();
 
 } catch (e) {
   // Catch Error
