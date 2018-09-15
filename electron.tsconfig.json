@@ -1,22 +1,9 @@
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "./",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "target": "es6",
     "module": "commonjs",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "paths": {
-      "@app/*": [ "./app/*" ],
-      "@node_modules/*": [ "./node_modules/*" ]
-    },
     "lib": [
       "es2017",
       "es2016",
@@ -24,9 +11,6 @@
       "dom"
     ]
   },
-  "files": [
-    "main.ts"
-  ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"

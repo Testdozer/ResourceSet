@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Actions } from "@ngrx/effects";
 import { Times } from "moq.ts";
 import { IMockedObject } from "../moq/moq";
 import { createInjector } from "./createInjector";

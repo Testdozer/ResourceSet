@@ -30,7 +30,7 @@ import {BuildWebpackServerSchema} from "./schema";
 
 const webpackMerge = require("webpack-merge");
 
-export class ServerBuilder implements Builder<BuildWebpackServerSchema> {
+export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
 
   constructor(public context: BuilderContext) {
   }
@@ -129,4 +129,4 @@ export class ServerBuilder implements Builder<BuildWebpackServerSchema> {
   }
 }
 
-export default ServerBuilder;
+export default MainProcessBuilder;
