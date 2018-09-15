@@ -1,0 +1,12 @@
+{
+  "name": "electron-builders",
+  "version": "0.0.1",
+  "builders": "builders.json",
+  "bundleDependencies": false,
+  "description": "Electron Webpack Build Facade",
+  "main": "src/index.js",
+  "typings": "src/index.d.ts",
+  "peerDependencies": {
+    "@angular-devkit/build-angular": "0.8.2"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "../architect/src/builders-schema.json",
+  "builders": {
+    "main-process": {
+      "class": "./src/main-process",
+      "schema": "./src/main-process/schema.json",
+      "description": "Build a main process of an electron application as a server angular app."
+    }
+  }
+}
