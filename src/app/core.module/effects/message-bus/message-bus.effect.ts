@@ -3,6 +3,7 @@ import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Action} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {switchMap} from "rxjs/operators";
+import { AddHistoryItemAction } from "../../../project-selector.module/actions/add-history-item.action";
 import {ipcMainChannelName, ipcRendererChannelName} from "../../../shared/ipc-names";
 import {OpenProjectAction} from "../../actions/open-project.action";
 
@@ -19,9 +20,9 @@ export class MessageBusEffect {
       ofType<OpenProjectAction>(OpenProjectAction.type),
       switchMap(action => {
         return new Observable<Action>(observer => {
-          window.require("electron").ipcRenderer.once(ipcRendererChannelName, (event, response) => {
+          window.require("electron").ipcRenderer.once(ipcRendererChannelName, (event, response: AddHistoryItemAction) => {
             this.zone.run(() => {
-              observer.next(response);
+              observer.next(new AddHistoryItemAction(response.payload));
               observer.complete();
             });
           });
