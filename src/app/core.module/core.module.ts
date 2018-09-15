@@ -1,11 +1,12 @@
-import { NgModule, Optional, SkipSelf } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { EffectsModule } from "@ngrx/effects";
-import { TranslateModule } from "@ngx-translate/core";
-import { SharedModule } from "../shared.module/shared.module";
-import { AppComponent } from "./containers/app.component/app.component";
-import { NotFoundPageComponent } from "./containers/not-found-page.component";
-import { StartUpEffect } from "./effects/start-up/start-up.effect";
+import {NgModule, Optional, SkipSelf} from "@angular/core";
+import {RouterModule} from "@angular/router";
+import {EffectsModule} from "@ngrx/effects";
+import {TranslateModule} from "@ngx-translate/core";
+import {SharedModule} from "../shared.module/shared.module";
+import {AppComponent} from "./containers/app.component/app.component";
+import {NotFoundPageComponent} from "./containers/not-found-page.component";
+import {MessageBusEffect} from "./effects/message-bus/message-bus.effect";
+import {StartUpEffect} from "./effects/start-up/start-up.effect";
 
 export const COMPONENTS = [
   AppComponent,
@@ -16,7 +17,7 @@ export const COMPONENTS = [
   imports: [
     SharedModule,
     RouterModule,
-    EffectsModule.forFeature([StartUpEffect]),
+    EffectsModule.forFeature([StartUpEffect, MessageBusEffect]),
     TranslateModule.forChild()
   ],
   declarations: COMPONENTS,

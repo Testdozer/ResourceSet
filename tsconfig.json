@@ -13,8 +13,6 @@
       "node_modules/@types"
     ],
     "paths": {
-      "@app/*": [ "./app/*" ],
-      "@node_modules/*": [ "../node_modules/*" ]
     },
     "lib": [
       "es2017",
