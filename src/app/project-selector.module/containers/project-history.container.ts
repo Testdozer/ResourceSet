@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs/index";
-import { OpenProjectAction } from "../../core.module/actions/open-project.action";
+import { OpenProjectAction } from "../../core.module/ipc-actions/open-project.action";
 import { DeleteHistoryItemAction } from "../actions/delete-history-item.action";
 import { historyItemsSelector } from "../selectors/history-items.selector";
 import { HistoryItem } from "../store/history.item";

@@ -1,8 +1,8 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { Action } from "@ngrx/store";
+import { AddHistoryItemAction } from "../../core.module/ipc-actions/add-history-item.action";
 import { DeleteHistoryItemAction } from "../actions/delete-history-item.action";
 import { HistoryItem } from "../store/history.item";
-import { AddHistoryItemAction } from "./../actions/add-history-item.action";
 
 export const historyItemEntityAdapter: EntityAdapter<HistoryItem> = createEntityAdapter<HistoryItem>({
   selectId: historyItem => historyItem.path,

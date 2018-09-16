@@ -3,9 +3,9 @@ import {Actions, Effect, ofType} from "@ngrx/effects";
 import {Action} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {switchMap} from "rxjs/operators";
-import { AddHistoryItemAction } from "../../../project-selector.module/actions/add-history-item.action";
 import {ipcMainChannelName, ipcRendererChannelName} from "../../../shared/ipc-names";
-import {OpenProjectAction} from "../../actions/open-project.action";
+import { AddHistoryItemAction } from "../../ipc-actions/add-history-item.action";
+import { OpenProjectAction } from "../../ipc-actions/open-project.action";
 
 @Injectable()
 export class MessageBusEffect {

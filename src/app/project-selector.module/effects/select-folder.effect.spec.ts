@@ -1,7 +1,7 @@
 import { Actions } from "@ngrx/effects";
 import { cold } from "jasmine-marbles";
 import { createInjector, get, resolve } from "../../../unit-tests.components/mocks/createInjector";
-import { OpenProjectAction } from "../../core.module/actions/open-project.action";
+import { OpenProjectAction } from "../../core.module/ipc-actions/open-project.action";
 import { SelectFolderService } from "../../core.module/services/select-folder.service";
 import { SelectFolderAction } from "../actions/select-folder.action";
 import { SelectFolderEffect } from "./select-folder.effect";
