@@ -1,25 +1,25 @@
-import {app} from "electron";
-import {Injectable} from "injection-js";
-import { MessageBusHost } from "../message-bus/message-bus-host";
-import {RendererWindow} from "./renderer-window";
+import { app } from "electron";
+import { Injectable } from "injection-js";
+import { Initializable } from "./core";
+import { RendererWindow } from "./renderer-window";
 
 @Injectable()
-export class ElectronApp {
+export class ElectronApp implements Initializable {
   constructor(
-    private rendererWindow: RendererWindow,
-    private messageBusHost: MessageBusHost) {
+    private rendererWindow: RendererWindow) {
 
-    this.messageBusHost.start();
+  }
 
+  public onInit(): void {
     try {
-      app.on("ready", rendererWindow.createWindow);
+      app.on("ready", () => this.rendererWindow.createWindow());
       app.on("window-all-closed", () => {
         if (process.platform !== "darwin") {
           app.quit();
         }
       });
 
-      app.on("activate", rendererWindow.createWindow);
+      app.on("activate", () => this.rendererWindow.createWindow());
 
     } catch (e) {
       return undefined;

@@ -13,7 +13,6 @@ export class ProjectNameProvider {
 
   public get(directory: string): string {
     const fileName = this.packageJsonProvider.get(directory);
-
     if (fileName === undefined) {
       return undefined;
     }

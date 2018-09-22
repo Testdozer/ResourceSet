@@ -1,12 +1,14 @@
-import {NgModule, Optional, SkipSelf} from "@angular/core";
-import {RouterModule} from "@angular/router";
-import {EffectsModule} from "@ngrx/effects";
-import {TranslateModule} from "@ngx-translate/core";
-import {SharedModule} from "../shared.module/shared.module";
-import {AppComponent} from "./containers/app.component/app.component";
-import {NotFoundPageComponent} from "./containers/not-found-page.component";
-import {MessageBusEffect} from "./effects/message-bus/message-bus.effect";
-import {StartUpEffect} from "./effects/start-up/start-up.effect";
+import { NgModule, Optional, SkipSelf } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { EffectsModule } from "@ngrx/effects";
+import { TranslateModule } from "@ngx-translate/core";
+import { SharedModule } from "../shared.module/shared.module";
+import { AddHistoryItemAction } from "./actions/add-history-item.action";
+import { OpenProjectAction } from "./actions/open-project.action";
+import { AppComponent } from "./containers/app.component/app.component";
+import { NotFoundPageComponent } from "./containers/not-found-page.component";
+import { MessageBusEffect } from "./effects/message-bus/message-bus.effect";
+import { StartUpEffect } from "./effects/start-up/start-up.effect";
 
 export const COMPONENTS = [
   AppComponent,
@@ -22,7 +24,10 @@ export const COMPONENTS = [
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
-  providers: []
+  providers: [
+    {provide: AddHistoryItemAction, useFactory: () => undefined},
+    {provide: OpenProjectAction, useFactory: () => undefined}
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

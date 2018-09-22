@@ -1,18 +1,23 @@
-import {Action} from "@ngrx/store";
+import { Action } from "@ngrx/store";
 import { ipcMain } from "electron";
-import {Injectable} from "injection-js";
-import {Observable} from "rxjs";
-import {ipcMainChannelName, ipcRendererChannelName} from "../../src/app/shared/ipc-names";
+import { Injectable } from "injection-js";
+import { Observable } from "rxjs";
+import { ipcMainChannelName } from "../../src/app/shared/ipc-names";
+import { SerializableActionDeserializer } from "../core/serializable-action.deserializer/serializable-action.deserializer";
+import { Message } from "./message";
 
 @Injectable()
 export class MessageBus {
-  constructor(private ipc: typeof ipcMain) {
+  constructor(
+    private ipc: typeof ipcMain,
+    private deserializer: SerializableActionDeserializer) {
   }
 
-  public messages$(): Observable<{ action: Action, sender: (action?: Action) => void }> {
-    return new Observable<{ action: Action, sender: (action?: Action) => void }>(observer => {
-      this.ipc.on(ipcMainChannelName, (event, inputAction) => {
-          observer.next({action: inputAction, sender: (action?: Action) => event.sender.send(ipcRendererChannelName, action)});
+  public messages$(): Observable<Message> {
+    return new Observable<Message>(observer => {
+      this.ipc.on(ipcMainChannelName, (event, arg: { action: Action, channel: string }) => {
+          const act = this.deserializer.deserialize(arg.action);
+          observer.next(new Message(act, (action?: Action) => event.sender.send(arg.channel, action)));
         }
       );
     });

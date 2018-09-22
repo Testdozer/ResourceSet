@@ -8,7 +8,6 @@ export class RendererWindow {
   private instance = null;
 
   constructor(private serve: boolean) {
-    this.createWindow = this.createWindow.bind(this);
   }
 
   public createWindow() {
@@ -29,15 +28,14 @@ export class RendererWindow {
         electron: path.join(__dirname, "node_modules", ".bin", "electron")
       });
       this.instance.loadURL("http://localhost:4200");
+      this.instance.webContents.openDevTools();
     } else {
       this.instance.loadURL(url.format({
-        pathname: path.join(__dirname, "dist/index.html"),
+        pathname: path.join(__dirname, "../dist/client/index.html"),
         protocol: "file:",
         slashes: true
       }));
     }
-
-    this.instance.webContents.openDevTools();
 
     this.instance.on("closed", () => {
       this.instance = null;

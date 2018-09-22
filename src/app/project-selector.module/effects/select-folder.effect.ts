@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
 import { Observable } from "rxjs/index";
 import { map, switchMap } from "rxjs/internal/operators";
-import { OpenProjectAction } from "../../core.module/ipc-actions/open-project.action";
+import { OpenProjectAction } from "../../core.module/actions/open-project.action";
 import { SelectFolderService } from "../../core.module/services/select-folder.service";
 import { SelectFolderAction } from "../actions/select-folder.action";
 

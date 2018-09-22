@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { Action } from "@ngrx/store";
-import { AddHistoryItemAction } from "../../core.module/ipc-actions/add-history-item.action";
+import { AddHistoryItemAction } from "../../core.module/actions/add-history-item.action";
 import { DeleteHistoryItemAction } from "../actions/delete-history-item.action";
 import { HistoryItem } from "../store/history.item";
 

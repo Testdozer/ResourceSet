@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Builder, BuilderConfiguration, BuilderContext, BuildEvent, } from "@angular-devkit/architect";
-import {getBrowserLoggingCb} from "@angular-devkit/build-angular";
-import {WebpackConfigOptions} from "@angular-devkit/build-angular/src/angular-cli-files/models/build-options";
+import { Builder, BuilderConfiguration, BuilderContext, BuildEvent } from "@angular-devkit/architect";
+import { getBrowserLoggingCb } from "@angular-devkit/build-angular";
+import { WebpackConfigOptions } from "@angular-devkit/build-angular/src/angular-cli-files/models/build-options";
 import {
   getAotConfig,
   getCommonConfig,
@@ -17,16 +17,17 @@ import {
   getStatsConfig,
   getStylesConfig
 } from "@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs";
-import {readTsconfig} from "@angular-devkit/build-angular/src/angular-cli-files/utilities/read-tsconfig";
-import {requireProjectModule} from "@angular-devkit/build-angular/src/angular-cli-files/utilities/require-project-module";
-import {defaultProgress, normalizeFileReplacements} from "@angular-devkit/build-angular/src/utils";
-import {WebpackBuilder} from "@angular-devkit/build-webpack";
-import {getSystemPath, normalize, Path, resolve, virtualFs} from "@angular-devkit/core";
-import {Stats} from "fs";
-import {concat, Observable, of} from "rxjs";
-import {concatMap, last, tap} from "rxjs/operators";
-import * as ts from "typescript"; // tslint:disable-line:no-implicit-dependencies
-import {BuildWebpackServerSchema} from "./schema";
+import { readTsconfig } from "@angular-devkit/build-angular/src/angular-cli-files/utilities/read-tsconfig";
+import { requireProjectModule } from "@angular-devkit/build-angular/src/angular-cli-files/utilities/require-project-module";
+import { defaultProgress, normalizeFileReplacements } from "@angular-devkit/build-angular/src/utils";
+import { WebpackBuilder } from "@angular-devkit/build-webpack";
+import { getSystemPath, normalize, Path, resolve, virtualFs } from "@angular-devkit/core";
+import { Stats } from "fs";
+import { concat, Observable, of } from "rxjs";
+import { concatMap, last, tap } from "rxjs/operators";
+import * as ts from "typescript";
+import { getElectronConfig } from "../webpack-configs/electron"; // tslint:disable-line:no-implicit-dependencies
+import { BuildWebpackServerSchema } from "./schema";
 
 const webpackMerge = require("webpack-merge");
 
@@ -51,15 +52,14 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
       tap(fileReplacements => options.fileReplacements = fileReplacements),
       concatMap(() => {
         const webpackConfig = this.buildWebpackConfig(root, projectRoot, host, options);
-
         return webpackBuilder.runWebpack(webpackConfig, getBrowserLoggingCb(options.verbose));
-      }),
+      })
     );
   }
 
   public buildWebpackConfig(root: Path, projectRoot: Path,
-                     host: virtualFs.Host<Stats>,
-                     options: BuildWebpackServerSchema) {
+                            host: virtualFs.Host<Stats>,
+                            options: BuildWebpackServerSchema) {
     let wco: WebpackConfigOptions;
 
     // TODO: make target defaults into configurations instead
@@ -74,7 +74,7 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
       && tsConfig.options.target !== projectTs.ScriptTarget.ES5;
 
     const buildOptions: typeof wco["buildOptions"] = {
-      ...options as {} as typeof wco["buildOptions"],
+      ...options as {} as typeof wco["buildOptions"]
     };
 
     wco = {
@@ -87,11 +87,11 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
         // aot: true,
         platform: "server",
         scripts: [],
-        styles: [],
+        styles: []
       },
       tsConfig,
       tsConfigPath,
-      supportES2015,
+      supportES2015
     };
 
     wco.buildOptions.progress = defaultProgress(wco.buildOptions.progress);
@@ -99,8 +99,9 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
     const webpackConfigs: {}[] = [
       getCommonConfig(wco),
       getServerConfig(wco),
+      getElectronConfig(wco),
       getStylesConfig(wco),
-      getStatsConfig(wco),
+      getStatsConfig(wco)
     ];
 
     if (wco.buildOptions.main || wco.buildOptions.polyfills) {
@@ -124,7 +125,7 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
         // TODO: remove this concat once host ops emit an event.
         ? concat(host.delete(resolvedOutputPath), of(null)).pipe(last())
         // ? of(null)
-        : of(null)),
+        : of(null))
     );
   }
 }
