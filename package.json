@@ -56,6 +56,7 @@
     "@angular/compiler": "6.1.7",
     "@angular/compiler-cli": "6.1.7",
     "@angular/core": "6.1.7",
+    "@angular/core-builds": "git://github.com/Testdozer/core-builds.git#6.0.x",
     "@angular/forms": "6.1.7",
     "@angular/http": "6.1.7",
     "@angular/language-service": "6.1.7",

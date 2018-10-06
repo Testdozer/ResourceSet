@@ -2,6 +2,7 @@
 import { createInjector, get } from "../../../../unit-tests.components/mocks/createInjector";
 import { add, clear } from "../../../shared/serializable-actions/serializable-actions.registration";
 import { SerializableActionDeserializer } from "./serializable-action.deserializer";
+import { SerializableActionException } from "./serializable-action.exception";
 
 describe("Bad request mapper", () => {
 
@@ -20,6 +21,8 @@ describe("Bad request mapper", () => {
   });
 
   it("Returns instance of mapped type", () => {
+    const name = "name";
+
     class TestAction implements Action {
       public static type = "[UnitTests] Test action";
       public readonly type = TestAction.type;
@@ -31,18 +34,22 @@ describe("Bad request mapper", () => {
 
     add(TestAction, TestAction.type);
 
-    const provider = get<SerializableActionDeserializer>();
-    const actual = provider.deserialize({type: TestAction.type});
+    const deserializer = get<SerializableActionDeserializer>();
+    const actual = deserializer.deserialize({type: TestAction.type, payload: {name}});
 
-    expect(actual).toEqual(jasmine.any(TestAction));
+    const expected = new TestAction({name});
+    expect(actual).toEqual(expected);
   });
 
   it("Throws exception when action has not found", () => {
-    // const badRequestKey = "key";
-    //
-    // const provider = get<SerializableActionDeserializer>();
-    // const actual = provider.deserialize(badRequestKey);
-    //
-    // expect(actual).toEqual(new SerializableActionDeserializer());
+    const provider = get<SerializableActionDeserializer>();
+    let actual;
+    try {
+      provider.deserialize({type: "action key"});
+    } catch (e) {
+      actual = e;
+    }
+
+    expect(actual).toEqual(new SerializableActionException());
   });
 });

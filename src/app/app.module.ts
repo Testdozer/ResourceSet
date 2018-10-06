@@ -17,7 +17,7 @@ import { AppComponent } from "./core.module/containers/app.component/app.compone
 import { CoreModule } from "./core.module/core.module";
 import { metaReducers } from "./core.module/reducers/meta.reducer";
 import { reducers } from "./core.module/reducers/router.reducer";
-import { ElectronService } from "./shared.module/providers/electron.service";
+import { ElectronService } from "./core.module/services/electron.service";
 import { CustomRouterStateSerializer } from "./shared/custom-router-state-serializer";
 
 export function HttpLoaderFactory(http: HttpClient) {
