@@ -13,4 +13,9 @@ export class Navigation {
   public toProjectSelector() {
     this.router.navigate(["/", PROJECT_SELECTOR]);
   }
+
+  public toProject() {
+    throw new Error("Not implemented");
+    // this.router.navigate(["/", PROJECT_SELECTOR]);
+  }
 }
