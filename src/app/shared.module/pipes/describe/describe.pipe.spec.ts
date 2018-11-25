@@ -34,7 +34,7 @@ describe("Describe pipe", () => {
     expect(actual).toBeObservable(cold("c|", {c: description}));
   });
 
-  it("Returns value when value does not have a description", () => {
+  it("Returns item when item does not have a description", () => {
     const value = {};
     const observable = cold("s|", {s: value});
 

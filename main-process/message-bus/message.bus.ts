@@ -2,8 +2,8 @@ import { Action } from "@ngrx/store";
 import { ipcMain } from "electron";
 import { Injectable } from "injection-js";
 import { Observable } from "rxjs";
+import { SerializableActionDeserializer } from "../../src/app/core.module/services/serializable-action.deserializer/serializable-action.deserializer";
 import { ipcMainChannelName } from "../../src/app/shared/ipc-names";
-import { SerializableActionDeserializer } from "../core/serializable-action.deserializer/serializable-action.deserializer";
 import { Message } from "./message";
 
 @Injectable()

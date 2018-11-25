@@ -5,12 +5,12 @@ export class PathParentIterator {
     private dirname: typeof path.dirname) {
   }
 
-  public *paths(directory: string): IterableIterator<string> {
+  public* paths(directory: string): IterableIterator<string> {
     let current = directory;
     yield current;
-    while ( true ) {
+    while (true) {
       const parent = this.dirname(current);
-      if ( parent === current) {
+      if (parent === current) {
         return;
       }
       current = parent;

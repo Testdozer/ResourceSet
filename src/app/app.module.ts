@@ -18,6 +18,7 @@ import { CoreModule } from "./core.module/core.module";
 import { metaReducers } from "./core.module/reducers/meta.reducer";
 import { reducers } from "./core.module/reducers/router.reducer";
 import { ElectronService } from "./core.module/services/electron.service";
+import { ProjectModule } from "./project-edit.module/project.module";
 import { CustomRouterStateSerializer } from "./shared/custom-router-state-serializer";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -46,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       logOnly: environment.production
     }),
     EffectsModule.forRoot([]),
-    CoreModule
+    CoreModule,
+    ProjectModule,
+    AppRoutingModule
   ],
   providers: [
     ElectronService,

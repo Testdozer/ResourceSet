@@ -1,5 +1,5 @@
-export class SerializableActionException extends Error {
-  constructor() {
-    super("Cannot deserialize action");
+export class DeserializeActionException extends Error {
+  constructor(action: any) {
+    super(`Cannot deserialize action: ${action ? action.type : "undefined"}`);
   }
 }

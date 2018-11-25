@@ -8,7 +8,7 @@ import { historyItemsSelector } from "./history-items.selector";
 
 describe("History items selector", () => {
 
-  it("Returns value", () => {
+  it("Returns item", () => {
     const path = "path to folder";
     const name = "project name";
 
