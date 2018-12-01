@@ -1,1 +1,15 @@
-<div>THIS iS A GRID (SPARTA!!)</div>
+<mat-table [dataSource]="dataSource">
+
+  <ng-container cdkColumnDef="key">
+    <mat-header-cell *cdkHeaderCellDef>{{"project.grid.key" | translate}}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.key}} </mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="{{language}}" *ngFor="let language of languages">
+    <mat-header-cell *cdkHeaderCellDef>{{language}}</mat-header-cell>
+    <mat-cell *cdkCellDef="let row"> {{row.values[language]}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

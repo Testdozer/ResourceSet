@@ -18,7 +18,12 @@ import { projectReducerMap } from "./reducers/reducers.map";
     ProjectRoutingModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PROJECT_FEATURE_NAME, projectReducerMap, {
-      initialState: {}
+      initialState: {
+        keys: [
+          "a"
+        ],
+        languages: ["en"]
+      }
     }),
     SharedModule
   ],

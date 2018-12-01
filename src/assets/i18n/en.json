@@ -4,5 +4,10 @@
       "select-folder": "Select directory",
       "history-title": "open recent"
     }
+  },
+  "project": {
+    "grid": {
+      "key": "Key"
+    }
   }
 }

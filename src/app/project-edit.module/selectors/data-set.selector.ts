@@ -21,5 +21,5 @@ export const dataSetSelector = select(createSelector(
   languagesProjector,
   keysProjector,
   valuesEntityAdapter.getSelectors(valuesProjector).selectEntities,
-  projector
+  (languages, keys, values) => [...projector(languages, keys, values)]
 ));

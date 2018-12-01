@@ -40,7 +40,7 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
     const options = builderConfig.options;
     const root = this.context.workspace.root;
     const projectRoot = resolve(root, builderConfig.root);
-    const host = new virtualFs.AliasHost(this.context.host as virtualFs.Host<Stats>);
+    const host = new virtualFs.AliasHost(this.context.host as virtualFs.Host<Stats>) as virtualFs.Host<Stats>;
     const webpackBuilder = new WebpackBuilder({...this.context, host});
 
     // TODO: verify using of(null) to kickstart things is a pattern.
@@ -79,6 +79,7 @@ export class MainProcessBuilder implements Builder<BuildWebpackServerSchema> {
 
     wco = {
       root: getSystemPath(root),
+      logger: this.context.logger,
       projectRoot: getSystemPath(projectRoot),
       // TODO: use only this.options, it contains all flags and configs items already.
       buildOptions: {

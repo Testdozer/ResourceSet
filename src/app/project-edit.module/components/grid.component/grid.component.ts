@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { RowItem } from "../../selectors/row-item";
 
 @Component({
@@ -9,5 +9,12 @@ import { RowItem } from "../../selectors/row-item";
 })
 export class GridComponent {
   @Input()
-  public dataSet: RowItem[];
+  public languages: string[];
+
+  @Input()
+  public dataSource: RowItem[];
+
+  public get displayedColumns(): string[] {
+    return ["key", ...this.languages];
+  }
 }
